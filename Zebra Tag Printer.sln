@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zebra Tag Printer", "Zebra Tag Printer\Zebra Tag Printer.csproj", "{6712EEEB-75EF-475D-91E9-16C745C3D226}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6712EEEB-75EF-475D-91E9-16C745C3D226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6712EEEB-75EF-475D-91E9-16C745C3D226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6712EEEB-75EF-475D-91E9-16C745C3D226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6712EEEB-75EF-475D-91E9-16C745C3D226}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BCED7AB8-7F4B-43AF-8EE0-F598A2B03AF9}
+	EndGlobalSection
+EndGlobal
