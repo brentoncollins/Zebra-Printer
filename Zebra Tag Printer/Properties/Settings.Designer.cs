@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TagPrinter.Properties {
+namespace Zebra_Tag_Printer.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -20,6 +20,186 @@ namespace TagPrinter.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int TagX {
+            get {
+                return ((int)(this["TagX"]));
+            }
+            set {
+                this["TagX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int TagY {
+            get {
+                return ((int)(this["TagY"]));
+            }
+            set {
+                this["TagY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int PermitNoX {
+            get {
+                return ((int)(this["PermitNoX"]));
+            }
+            set {
+                this["PermitNoX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int PermitNoY {
+            get {
+                return ((int)(this["PermitNoY"]));
+            }
+            set {
+                this["PermitNoY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int PermitBoxX {
+            get {
+                return ((int)(this["PermitBoxX"]));
+            }
+            set {
+                this["PermitBoxX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int PermitBoxY {
+            get {
+                return ((int)(this["PermitBoxY"]));
+            }
+            set {
+                this["PermitBoxY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int IsoPointX {
+            get {
+                return ((int)(this["IsoPointX"]));
+            }
+            set {
+                this["IsoPointX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int IsoPointY {
+            get {
+                return ((int)(this["IsoPointY"]));
+            }
+            set {
+                this["IsoPointY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int IsoOfficerX {
+            get {
+                return ((int)(this["IsoOfficerX"]));
+            }
+            set {
+                this["IsoOfficerX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int IsoOfficerY {
+            get {
+                return ((int)(this["IsoOfficerY"]));
+            }
+            set {
+                this["IsoOfficerY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int DateX {
+            get {
+                return ((int)(this["DateX"]));
+            }
+            set {
+                this["DateX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int DateY {
+            get {
+                return ((int)(this["DateY"]));
+            }
+            set {
+                this["DateY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int OfficerX {
+            get {
+                return ((int)(this["OfficerX"]));
+            }
+            set {
+                this["OfficerX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int OfficerY {
+            get {
+                return ((int)(this["OfficerY"]));
+            }
+            set {
+                this["OfficerY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string Setting {
+            get {
+                return ((string)(this["Setting"]));
+            }
+            set {
+                this["Setting"] = value;
             }
         }
     }

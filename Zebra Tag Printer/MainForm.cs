@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using TagPrinter.Properties;
+using Zebra_Tag_Printer.Properties;
 
 namespace TagPrinter
 {
@@ -45,13 +48,14 @@ namespace TagPrinter
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
                 // Set the print document soze for the print function, this may be different for the print preview for viewing reasons.
-                printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom", 1000  , 6000);
+                printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom", 1000, 6000);
                 printDocument1.Print();
             }
         }
 
         // Paste the clipboard into the DataGridView *** Look into not pasting columns
-        private void PasteClipboard() {
+        private void PasteClipboard()
+        {
             DataObject o = (DataObject)Clipboard.GetDataObject();
             if (o.GetDataPresent(DataFormats.Text))
             {
@@ -73,30 +77,33 @@ namespace TagPrinter
                         row++;
                     }
 
-            } 
+                }
                 catch (Exception e)
                 {
-                 Console.WriteLine("An error occurred: '{0}'", e);
+                    Console.WriteLine("An error occurred: '{0}'", e);
                 }
             }
         }
 
         // Reset the counter, clear the grid and paste
-        private void buttonPaste_Click(object sender, EventArgs e) {
- 
+        private void buttonPaste_Click(object sender, EventArgs e)
+        {
+
             myDataGridView.Rows.Clear();
             PasteClipboard();
         }
 
         // Reset the counter and clear the grid
-        private void buttonClear_Click(object sender, EventArgs e) {
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
 
             myDataGridView.Rows.Clear();
         }
 
         // Print document function will loop for all pages until the 
-        private void printDocument1_PrintPage_1(object sender, System.Drawing.Printing.PrintPageEventArgs e) {
-           
+        private void printDocument1_PrintPage_1(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+
             // Get table results
             Result = myDataGridView.Rows.OfType<DataGridViewRow>().Select(
             r => r.Cells.OfType<DataGridViewCell>().Select(c => c.Value).ToArray()).ToList();
@@ -115,13 +122,21 @@ namespace TagPrinter
             }
 
             totalnumber += 1;
-            e.Graphics.DrawString(totalnumber.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, 80, 50);
-            e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 160, 380);
-            e.Graphics.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 240, 405);
-            e.Graphics.DrawString(item.ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 50, 480); //Across,Down
-            e.Graphics.DrawString(textPermitOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 190, 535);
-            e.Graphics.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 90, 580);
-            e.Graphics.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 90, 610);
+            e.Graphics.DrawString(totalnumber.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, Settings.Default.TagX, Settings.Default.TagY);
+            e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.PermitNoX, Settings.Default.PermitNoY);
+            e.Graphics.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.PermitBoxX, Settings.Default.PermitBoxY);
+            e.Graphics.DrawString(item.ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.IsoPointX, Settings.Default.IsoPointY); //Across,Down
+            e.Graphics.DrawString(textPermitOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.OfficerX, Settings.Default.OfficerY);
+            e.Graphics.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.IsoOfficerX, Settings.Default.IsoOfficerY);
+            e.Graphics.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.DateX, Settings.Default.DateY);
+
+            //e.Graphics.DrawString(totalnumber.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, 80, 50);
+            //e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 160, 380);
+            //e.Graphics.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 240, 405);
+            //e.Graphics.DrawString(item.ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 50, 480); //Across,Down
+            //e.Graphics.DrawString(textPermitOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 190, 535);
+            //e.Graphics.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 90, 580);
+            //e.Graphics.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 90, 610);
 
             // Check if the next item is an empty string if it is the next tag is not needed.
             if (Result.ElementAtOrDefault(totalnumber + 1) == null)
@@ -138,10 +153,10 @@ namespace TagPrinter
                 totalnumber = 0;
 
             }
-                else
+            else
                 e.HasMorePages = true;
 
-            
+
 
             //Else set up the next page
 
@@ -149,7 +164,7 @@ namespace TagPrinter
             // May not need this with the new check
 
         }
-        
+
         private void MainWindow_Load(object sender, EventArgs e)
         {
 
@@ -158,11 +173,11 @@ namespace TagPrinter
         // Print Preview
         private void button1_Click(object sender, EventArgs e)
         {
-  
+
             //Get table data to check if empty
             var Result = myDataGridView.Rows.OfType<DataGridViewRow>().Select(
             r => r.Cells.OfType<DataGridViewCell>().Select(c => c.Value).ToArray()).ToList();
-        
+
             var firstitem = Result[0][0];
 
             if (firstitem == null)
@@ -175,18 +190,20 @@ namespace TagPrinter
             //printPreviewDialog1.Size = new System.Drawing.Size(200, 300);
             printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom", 450, 700);
             printPreviewDialog1.WindowState = FormWindowState.Maximized;
-         
+
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.ShowDialog();
 
-           
+
         }
 
-        private void textPermitBox_TextChanged(object sender, EventArgs e)
+
+        private void buttonSettings_Click(object sender, EventArgs e)
         {
-
+            new Zebra_Tag_Printer.SettingsForm().Show();
         }
 
+  
     }
 }
 
