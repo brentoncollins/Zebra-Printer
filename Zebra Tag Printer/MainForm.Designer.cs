@@ -228,7 +228,7 @@ namespace TagPrinter
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1576, 2510);
+            this.ClientSize = new System.Drawing.Size(1568, 1712);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.PrintPerview);
             this.Controls.Add(this.buttonClear);
@@ -245,7 +245,7 @@ namespace TagPrinter
             this.Controls.Add(this.labelPermitBox);
             this.Controls.Add(this.labelPermitNumber);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(50, 2598);
+            this.MinimumSize = new System.Drawing.Size(1600, 1800);
             this.Name = "MainWindow";
             this.Text = "Permit of Isolation tag printer.";
             this.Load += new System.EventHandler(this.MainWindow_Load);

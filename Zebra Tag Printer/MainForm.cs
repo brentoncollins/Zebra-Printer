@@ -1,17 +1,17 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.Text;
-using TagPrinter.Properties;
+using System.IO;
+using System.Reflection;
 using Zebra_Tag_Printer.Properties;
+
 
 namespace TagPrinter
 {
-
+    
     public partial class MainWindow : Form
 
     {
@@ -20,17 +20,32 @@ namespace TagPrinter
         List<object[]> Result;
         object item = 0;
         string newstring = "";
-     
+        bool pPreview = false;
+        
 
+
+        //Bitmap resizedbmp = new Bitmap(bmp, new Size(bmp.Width / 2, bmp.Height / 2));
+
+       //static float width = 3000;
+       //static float height = 5000;
+
+       // static float scale = Math.Min(width / bmp.Width, height / bmp.Height);
+        //static int scaleWidth = (int)(bmp.Width * scale);
+        //static int scaleHeight = (int)(bmp.Height * scale);
+        //Bitmap scaledBitmap = new Bitmap(scaleWidth, scaleHeight);
+        
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+
+       
         //Print button checks
         private void buttonPrint_Click(object sender, EventArgs e)
         {
+            pPreview = false;
             totalnumber = 0;
             // Get list from grid list[0][0]
             var Result = myDataGridView.Rows.OfType<DataGridViewRow>().Select(
@@ -55,6 +70,7 @@ namespace TagPrinter
                 printDocument1.Print();
             }
         }
+
 
         // Paste the clipboard into the DataGridView *** Look into not pasting columns
         private void PasteClipboard()
@@ -113,11 +129,6 @@ namespace TagPrinter
             // Set vairable for the isolation item in the list
 
             item = Result[totalnumber][0];
-            // Set variable for the next item this is to check later on if the next page needs to be setup or it is null
-
-            // Print all text to the page ** Look into try block
-
-            // Add one to the counter for tag numbers
 
             // If the isolation point is long
             if (item.ToString().Length > 32)
@@ -138,11 +149,20 @@ namespace TagPrinter
                 string a = item.ToString().Substring(0, closest) + Environment.NewLine;
                 string b = item.ToString().Substring(closest, z - closest);
                 newstring = a + b;
-
-
             }
 
             totalnumber += 1;
+
+            if (pPreview.Equals(true))
+                {
+                Assembly myAssembly = Assembly.GetExecutingAssembly();
+                string[] names = myAssembly.GetManifestResourceNames();
+
+                Stream myStream = myAssembly.GetManifestResourceStream("Zebra_Tag_Printer.tag.bmp");
+                Bitmap bmp = new Bitmap(myStream);
+                e.Graphics.DrawImage(Zebra_Tag_Printer.Methods.ScaleByPercent(bmp, 80), 0,0);
+            }
+            
             e.Graphics.DrawString(totalnumber.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, Settings.Default.TagX, Settings.Default.TagY);
             e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.PermitNoX, Settings.Default.PermitNoY);
             e.Graphics.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.PermitBoxX, Settings.Default.PermitBoxY);
@@ -179,11 +199,6 @@ namespace TagPrinter
 
 
 
-            //Else set up the next page
-
-
-            // May not need this with the new check
-
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -194,7 +209,7 @@ namespace TagPrinter
         // Print Preview
         private void button1_Click(object sender, EventArgs e)
         {
-
+            pPreview = true;
             //Get table data to check if empty
             var Result = myDataGridView.Rows.OfType<DataGridViewRow>().Select(
             r => r.Cells.OfType<DataGridViewCell>().Select(c => c.Value).ToArray()).ToList();
@@ -209,8 +224,12 @@ namespace TagPrinter
 
             // Setup print preview
             //printPreviewDialog1.Size = new System.Drawing.Size(200, 300);
+
             printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom", 450, 700);
             printPreviewDialog1.WindowState = FormWindowState.Maximized;
+            // Disable print button on preview
+            ((ToolStripButton)((ToolStrip)printPreviewDialog1.Controls[1]).Items[0]).Enabled = false;
+
 
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.ShowDialog();
@@ -224,8 +243,10 @@ namespace TagPrinter
             new Zebra_Tag_Printer.SettingsForm().Show();
         }
 
-  
+       
     }
+
+    
 }
 
 
