@@ -57,40 +57,36 @@ namespace TagPrinter
             // labelPermitNumber
             // 
             this.labelPermitNumber.AutoSize = true;
-            this.labelPermitNumber.Location = new System.Drawing.Point(954, 41);
-            this.labelPermitNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPermitNumber.Location = new System.Drawing.Point(803, 34);
             this.labelPermitNumber.Name = "labelPermitNumber";
-            this.labelPermitNumber.Size = new System.Drawing.Size(233, 37);
+            this.labelPermitNumber.Size = new System.Drawing.Size(204, 32);
             this.labelPermitNumber.TabIndex = 0;
             this.labelPermitNumber.Text = "Permit Number";
             // 
             // labelPermitBox
             // 
             this.labelPermitBox.AutoSize = true;
-            this.labelPermitBox.Location = new System.Drawing.Point(954, 91);
-            this.labelPermitBox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPermitBox.Location = new System.Drawing.Point(803, 76);
             this.labelPermitBox.Name = "labelPermitBox";
-            this.labelPermitBox.Size = new System.Drawing.Size(172, 37);
+            this.labelPermitBox.Size = new System.Drawing.Size(153, 32);
             this.labelPermitBox.TabIndex = 1;
             this.labelPermitBox.Text = "Permit Box";
             // 
             // labelPermitOfficer
             // 
             this.labelPermitOfficer.AutoSize = true;
-            this.labelPermitOfficer.Location = new System.Drawing.Point(954, 142);
-            this.labelPermitOfficer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPermitOfficer.Location = new System.Drawing.Point(803, 119);
             this.labelPermitOfficer.Name = "labelPermitOfficer";
-            this.labelPermitOfficer.Size = new System.Drawing.Size(212, 37);
+            this.labelPermitOfficer.Size = new System.Drawing.Size(188, 32);
             this.labelPermitOfficer.TabIndex = 2;
             this.labelPermitOfficer.Text = "Permit Officer";
             // 
             // labelPermitIsoOfficer
             // 
             this.labelPermitIsoOfficer.AutoSize = true;
-            this.labelPermitIsoOfficer.Location = new System.Drawing.Point(954, 193);
-            this.labelPermitIsoOfficer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPermitIsoOfficer.Location = new System.Drawing.Point(803, 162);
             this.labelPermitIsoOfficer.Name = "labelPermitIsoOfficer";
-            this.labelPermitIsoOfficer.Size = new System.Drawing.Size(340, 37);
+            this.labelPermitIsoOfficer.Size = new System.Drawing.Size(302, 32);
             this.labelPermitIsoOfficer.TabIndex = 3;
             this.labelPermitIsoOfficer.Text = "Permit Isolation Officer";
             // 
@@ -98,47 +94,41 @@ namespace TagPrinter
             // 
             this.labelPermitTagPrint.AutoSize = true;
             this.labelPermitTagPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPermitTagPrint.Location = new System.Drawing.Point(177, 5);
-            this.labelPermitTagPrint.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPermitTagPrint.Location = new System.Drawing.Point(149, 4);
             this.labelPermitTagPrint.Name = "labelPermitTagPrint";
-            this.labelPermitTagPrint.Size = new System.Drawing.Size(555, 82);
+            this.labelPermitTagPrint.Size = new System.Drawing.Size(463, 69);
             this.labelPermitTagPrint.TabIndex = 4;
             this.labelPermitTagPrint.Text = "Permit Tag Print";
             // 
             // textPermitNumber
             // 
-            this.textPermitNumber.Location = new System.Drawing.Point(1347, 33);
-            this.textPermitNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.textPermitNumber.Location = new System.Drawing.Point(1134, 28);
             this.textPermitNumber.Name = "textPermitNumber";
-            this.textPermitNumber.Size = new System.Drawing.Size(448, 44);
+            this.textPermitNumber.Size = new System.Drawing.Size(378, 38);
             this.textPermitNumber.TabIndex = 5;
             this.textPermitNumber.Text = "Permit Number";
             // 
             // textPermitBox
             // 
-            this.textPermitBox.Location = new System.Drawing.Point(1347, 84);
-            this.textPermitBox.Margin = new System.Windows.Forms.Padding(4);
+            this.textPermitBox.Location = new System.Drawing.Point(1134, 70);
             this.textPermitBox.Name = "textPermitBox";
-            this.textPermitBox.Size = new System.Drawing.Size(448, 44);
+            this.textPermitBox.Size = new System.Drawing.Size(378, 38);
             this.textPermitBox.TabIndex = 6;
             this.textPermitBox.Text = "Permit Box";
-     
             // 
             // textPermitOfficer
             // 
-            this.textPermitOfficer.Location = new System.Drawing.Point(1347, 135);
-            this.textPermitOfficer.Margin = new System.Windows.Forms.Padding(4);
+            this.textPermitOfficer.Location = new System.Drawing.Point(1134, 113);
             this.textPermitOfficer.Name = "textPermitOfficer";
-            this.textPermitOfficer.Size = new System.Drawing.Size(448, 44);
+            this.textPermitOfficer.Size = new System.Drawing.Size(378, 38);
             this.textPermitOfficer.TabIndex = 7;
             this.textPermitOfficer.Text = "Permit Officer";
             // 
             // textPermitIsoOfficer
             // 
-            this.textPermitIsoOfficer.Location = new System.Drawing.Point(1347, 186);
-            this.textPermitIsoOfficer.Margin = new System.Windows.Forms.Padding(4);
+            this.textPermitIsoOfficer.Location = new System.Drawing.Point(1134, 156);
             this.textPermitIsoOfficer.Name = "textPermitIsoOfficer";
-            this.textPermitIsoOfficer.Size = new System.Drawing.Size(448, 44);
+            this.textPermitIsoOfficer.Size = new System.Drawing.Size(378, 38);
             this.textPermitIsoOfficer.TabIndex = 8;
             this.textPermitIsoOfficer.Text = "Permit Isolation Officer";
             // 
@@ -146,10 +136,9 @@ namespace TagPrinter
             // 
             this.buttonPrint.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPrint.Location = new System.Drawing.Point(1564, 1924);
-            this.buttonPrint.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPrint.Location = new System.Drawing.Point(1317, 1612);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(267, 86);
+            this.buttonPrint.Size = new System.Drawing.Size(225, 72);
             this.buttonPrint.TabIndex = 9;
             this.buttonPrint.Text = "Print";
             this.buttonPrint.UseVisualStyleBackColor = false;
@@ -157,10 +146,9 @@ namespace TagPrinter
             // 
             // buttonPaste
             // 
-            this.buttonPaste.Location = new System.Drawing.Point(27, 1924);
-            this.buttonPaste.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPaste.Location = new System.Drawing.Point(23, 1612);
             this.buttonPaste.Name = "buttonPaste";
-            this.buttonPaste.Size = new System.Drawing.Size(255, 91);
+            this.buttonPaste.Size = new System.Drawing.Size(215, 76);
             this.buttonPaste.TabIndex = 10;
             this.buttonPaste.Text = "Paste";
             this.buttonPaste.UseVisualStyleBackColor = true;
@@ -180,13 +168,12 @@ namespace TagPrinter
             this.myDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.myDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IsolationPoint});
-            this.myDataGridView.Location = new System.Drawing.Point(27, 91);
-            this.myDataGridView.Margin = new System.Windows.Forms.Padding(4);
-            this.myDataGridView.MinimumSize = new System.Drawing.Size(475, 0);
+            this.myDataGridView.Location = new System.Drawing.Point(23, 76);
+            this.myDataGridView.MinimumSize = new System.Drawing.Size(400, 0);
             this.myDataGridView.Name = "myDataGridView";
             this.myDataGridView.RowHeadersVisible = false;
             this.myDataGridView.RowTemplate.Height = 15;
-            this.myDataGridView.Size = new System.Drawing.Size(898, 1821);
+            this.myDataGridView.Size = new System.Drawing.Size(756, 1526);
             this.myDataGridView.TabIndex = 11;
             // 
             // IsolationPoint
@@ -196,10 +183,9 @@ namespace TagPrinter
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(290, 1924);
-            this.buttonClear.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonClear.Location = new System.Drawing.Point(244, 1612);
             this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(274, 91);
+            this.buttonClear.Size = new System.Drawing.Size(231, 76);
             this.buttonClear.TabIndex = 12;
             this.buttonClear.Text = "Clear Table";
             this.buttonClear.UseVisualStyleBackColor = true;
@@ -207,10 +193,9 @@ namespace TagPrinter
             // 
             // PrintPerview
             // 
-            this.PrintPerview.Location = new System.Drawing.Point(1281, 1922);
-            this.PrintPerview.Margin = new System.Windows.Forms.Padding(4);
+            this.PrintPerview.Location = new System.Drawing.Point(1079, 1610);
             this.PrintPerview.Name = "PrintPerview";
-            this.PrintPerview.Size = new System.Drawing.Size(276, 88);
+            this.PrintPerview.Size = new System.Drawing.Size(232, 74);
             this.PrintPerview.TabIndex = 13;
             this.PrintPerview.Text = "Print Preview";
             this.PrintPerview.UseVisualStyleBackColor = true;
@@ -228,21 +213,20 @@ namespace TagPrinter
             // 
             // buttonSettings
             // 
-            this.buttonSettings.Location = new System.Drawing.Point(1005, 1922);
+            this.buttonSettings.Location = new System.Drawing.Point(846, 1610);
             this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Size = new System.Drawing.Size(269, 88);
+            this.buttonSettings.Size = new System.Drawing.Size(227, 74);
             this.buttonSettings.TabIndex = 14;
             this.buttonSettings.Text = "Settings";
             this.buttonSettings.UseVisualStyleBackColor = true;
             this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
-          
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1861, 2048);
+            this.ClientSize = new System.Drawing.Size(1567, 1716);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.PrintPerview);
             this.Controls.Add(this.buttonClear);
@@ -259,8 +243,7 @@ namespace TagPrinter
             this.Controls.Add(this.labelPermitBox);
             this.Controls.Add(this.labelPermitNumber);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(53, 103);
+            this.MinimumSize = new System.Drawing.Size(50, 101);
             this.Name = "MainWindow";
             this.Text = "Permit of Isolation tag printer.";
             this.Load += new System.EventHandler(this.MainWindow_Load);
