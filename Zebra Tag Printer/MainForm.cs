@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Text;
 using TagPrinter.Properties;
 using Zebra_Tag_Printer.Properties;
 
@@ -18,6 +19,8 @@ namespace TagPrinter
         int totalnumber = 0;
         List<object[]> Result;
         object item = 0;
+        string newstring = "";
+     
 
 
         public MainWindow()
@@ -115,17 +118,35 @@ namespace TagPrinter
             // Print all text to the page ** Look into try block
 
             // Add one to the counter for tag numbers
-            if (item.ToString().Length > 40)
+
+            // If the isolation point is long
+            if (item.ToString().Length > 32)
             {
-                var splt = item.ToString().Split(" ".ToCharArray());
-                Console.WriteLine(splt);
+                //Find all spaces in string and add to list
+                var foundIndexes = new List<int>();
+                for (int i = 0; i < item.ToString().Length; i++)
+
+                    if (item.ToString()[i] == ' ') foundIndexes.Add(i);
+                
+                // Find the closest space to the position 32
+                int closest = foundIndexes.Aggregate((x, y) => Math.Abs(x - 32) < Math.Abs(y - 32) ? x : y);
+             
+               // Get string length
+                int z = item.ToString().Length;
+
+                // Create substrings, add newling and join them together again
+                string a = item.ToString().Substring(0, closest) + Environment.NewLine;
+                string b = item.ToString().Substring(closest, z - closest);
+                newstring = a + b;
+
+
             }
 
             totalnumber += 1;
             e.Graphics.DrawString(totalnumber.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, Settings.Default.TagX, Settings.Default.TagY);
             e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.PermitNoX, Settings.Default.PermitNoY);
             e.Graphics.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.PermitBoxX, Settings.Default.PermitBoxY);
-            e.Graphics.DrawString(item.ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.IsoPointX, Settings.Default.IsoPointY); //Across,Down
+            e.Graphics.DrawString(newstring, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.IsoPointX, Settings.Default.IsoPointY); //Across,Down
             e.Graphics.DrawString(textPermitOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.OfficerX, Settings.Default.OfficerY);
             e.Graphics.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.IsoOfficerX, Settings.Default.IsoOfficerY);
             e.Graphics.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.DateX, Settings.Default.DateY);

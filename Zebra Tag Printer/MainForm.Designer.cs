@@ -146,7 +146,7 @@ namespace TagPrinter
             // 
             // buttonPaste
             // 
-            this.buttonPaste.Location = new System.Drawing.Point(23, 1612);
+            this.buttonPaste.Location = new System.Drawing.Point(23, 1610);
             this.buttonPaste.Name = "buttonPaste";
             this.buttonPaste.Size = new System.Drawing.Size(215, 76);
             this.buttonPaste.TabIndex = 10;
@@ -183,7 +183,7 @@ namespace TagPrinter
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(244, 1612);
+            this.buttonClear.Location = new System.Drawing.Point(277, 1610);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(231, 76);
             this.buttonClear.TabIndex = 12;
@@ -193,7 +193,7 @@ namespace TagPrinter
             // 
             // PrintPerview
             // 
-            this.PrintPerview.Location = new System.Drawing.Point(1079, 1610);
+            this.PrintPerview.Location = new System.Drawing.Point(547, 1611);
             this.PrintPerview.Name = "PrintPerview";
             this.PrintPerview.Size = new System.Drawing.Size(232, 74);
             this.PrintPerview.TabIndex = 13;
@@ -213,12 +213,14 @@ namespace TagPrinter
             // 
             // buttonSettings
             // 
-            this.buttonSettings.Location = new System.Drawing.Point(846, 1610);
+            this.buttonSettings.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSettings.Location = new System.Drawing.Point(1084, 1612);
             this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Size = new System.Drawing.Size(227, 74);
+            this.buttonSettings.Size = new System.Drawing.Size(227, 72);
             this.buttonSettings.TabIndex = 14;
             this.buttonSettings.Text = "Settings";
-            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.UseVisualStyleBackColor = false;
             this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
             // MainWindow
@@ -226,7 +228,7 @@ namespace TagPrinter
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1567, 1716);
+            this.ClientSize = new System.Drawing.Size(1576, 2510);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.PrintPerview);
             this.Controls.Add(this.buttonClear);
@@ -243,7 +245,7 @@ namespace TagPrinter
             this.Controls.Add(this.labelPermitBox);
             this.Controls.Add(this.labelPermitNumber);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(50, 101);
+            this.MinimumSize = new System.Drawing.Size(50, 2598);
             this.Name = "MainWindow";
             this.Text = "Permit of Isolation tag printer.";
             this.Load += new System.EventHandler(this.MainWindow_Load);

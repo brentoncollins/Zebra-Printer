@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.labelPermitIsoOfficer = new System.Windows.Forms.Label();
             this.labelPermitOfficer = new System.Windows.Forms.Label();
             this.labelPermitBox = new System.Windows.Forms.Label();
@@ -60,49 +61,45 @@
             // labelPermitIsoOfficer
             // 
             this.labelPermitIsoOfficer.AutoSize = true;
-            this.labelPermitIsoOfficer.Location = new System.Drawing.Point(43, 609);
-            this.labelPermitIsoOfficer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPermitIsoOfficer.Location = new System.Drawing.Point(10, 510);
             this.labelPermitIsoOfficer.Name = "labelPermitIsoOfficer";
-            this.labelPermitIsoOfficer.Size = new System.Drawing.Size(340, 37);
+            this.labelPermitIsoOfficer.Size = new System.Drawing.Size(302, 32);
             this.labelPermitIsoOfficer.TabIndex = 7;
             this.labelPermitIsoOfficer.Text = "Permit Isolation Officer";
             // 
             // labelPermitOfficer
             // 
             this.labelPermitOfficer.AutoSize = true;
-            this.labelPermitOfficer.Location = new System.Drawing.Point(43, 559);
-            this.labelPermitOfficer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPermitOfficer.Location = new System.Drawing.Point(10, 468);
             this.labelPermitOfficer.Name = "labelPermitOfficer";
-            this.labelPermitOfficer.Size = new System.Drawing.Size(212, 37);
+            this.labelPermitOfficer.Size = new System.Drawing.Size(188, 32);
             this.labelPermitOfficer.TabIndex = 6;
             this.labelPermitOfficer.Text = "Permit Officer";
             // 
             // labelPermitBox
             // 
             this.labelPermitBox.AutoSize = true;
-            this.labelPermitBox.Location = new System.Drawing.Point(45, 452);
-            this.labelPermitBox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPermitBox.Location = new System.Drawing.Point(12, 379);
             this.labelPermitBox.Name = "labelPermitBox";
-            this.labelPermitBox.Size = new System.Drawing.Size(172, 37);
+            this.labelPermitBox.Size = new System.Drawing.Size(153, 32);
             this.labelPermitBox.TabIndex = 5;
             this.labelPermitBox.Text = "Permit Box";
             // 
             // labelPermitNumber
             // 
             this.labelPermitNumber.AutoSize = true;
-            this.labelPermitNumber.Location = new System.Drawing.Point(45, 402);
-            this.labelPermitNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPermitNumber.Location = new System.Drawing.Point(12, 337);
             this.labelPermitNumber.Name = "labelPermitNumber";
-            this.labelPermitNumber.Size = new System.Drawing.Size(233, 37);
+            this.labelPermitNumber.Size = new System.Drawing.Size(204, 32);
             this.labelPermitNumber.TabIndex = 4;
             this.labelPermitNumber.Text = "Permit Number";
             // 
             // labelDate
             // 
             this.labelDate.AutoSize = true;
-            this.labelDate.Location = new System.Drawing.Point(45, 659);
+            this.labelDate.Location = new System.Drawing.Point(12, 552);
             this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(84, 37);
+            this.labelDate.Size = new System.Drawing.Size(75, 32);
             this.labelDate.TabIndex = 8;
             this.labelDate.Text = "Date";
             this.labelDate.Click += new System.EventHandler(this.label1_Click);
@@ -110,152 +107,152 @@
             // labelIsolationPoint
             // 
             this.labelIsolationPoint.AutoSize = true;
-            this.labelIsolationPoint.Location = new System.Drawing.Point(45, 502);
+            this.labelIsolationPoint.Location = new System.Drawing.Point(12, 421);
             this.labelIsolationPoint.Name = "labelIsolationPoint";
-            this.labelIsolationPoint.Size = new System.Drawing.Size(218, 37);
+            this.labelIsolationPoint.Size = new System.Drawing.Size(195, 32);
             this.labelIsolationPoint.TabIndex = 9;
             this.labelIsolationPoint.Text = "Isolation Point";
             // 
             // labelTagNumber
             // 
             this.labelTagNumber.AutoSize = true;
-            this.labelTagNumber.Location = new System.Drawing.Point(45, 352);
+            this.labelTagNumber.Location = new System.Drawing.Point(12, 295);
             this.labelTagNumber.Name = "labelTagNumber";
-            this.labelTagNumber.Size = new System.Drawing.Size(197, 37);
+            this.labelTagNumber.Size = new System.Drawing.Size(171, 32);
             this.labelTagNumber.TabIndex = 10;
             this.labelTagNumber.Text = "Tag Number";
             // 
             // textTagX
             // 
-            this.textTagX.Location = new System.Drawing.Point(391, 352);
+            this.textTagX.Location = new System.Drawing.Point(329, 295);
             this.textTagX.Name = "textTagX";
-            this.textTagX.Size = new System.Drawing.Size(100, 44);
+            this.textTagX.Size = new System.Drawing.Size(85, 38);
             this.textTagX.TabIndex = 11;
             // 
             // textTagY
             // 
-            this.textTagY.Location = new System.Drawing.Point(519, 352);
+            this.textTagY.Location = new System.Drawing.Point(437, 295);
             this.textTagY.Name = "textTagY";
-            this.textTagY.Size = new System.Drawing.Size(100, 44);
+            this.textTagY.Size = new System.Drawing.Size(85, 38);
             this.textTagY.TabIndex = 12;
             // 
             // textPermitNoX
             // 
-            this.textPermitNoX.Location = new System.Drawing.Point(390, 402);
+            this.textPermitNoX.Location = new System.Drawing.Point(328, 337);
             this.textPermitNoX.Name = "textPermitNoX";
-            this.textPermitNoX.Size = new System.Drawing.Size(100, 44);
+            this.textPermitNoX.Size = new System.Drawing.Size(85, 38);
             this.textPermitNoX.TabIndex = 13;
             // 
             // textPermitNoY
             // 
-            this.textPermitNoY.Location = new System.Drawing.Point(519, 402);
+            this.textPermitNoY.Location = new System.Drawing.Point(437, 337);
             this.textPermitNoY.Name = "textPermitNoY";
-            this.textPermitNoY.Size = new System.Drawing.Size(100, 44);
+            this.textPermitNoY.Size = new System.Drawing.Size(85, 38);
             this.textPermitNoY.TabIndex = 14;
             // 
             // textPermitBoxX
             // 
-            this.textPermitBoxX.Location = new System.Drawing.Point(390, 452);
+            this.textPermitBoxX.Location = new System.Drawing.Point(328, 379);
             this.textPermitBoxX.Name = "textPermitBoxX";
-            this.textPermitBoxX.Size = new System.Drawing.Size(100, 44);
+            this.textPermitBoxX.Size = new System.Drawing.Size(85, 38);
             this.textPermitBoxX.TabIndex = 15;
             // 
             // textPermitBoxY
             // 
-            this.textPermitBoxY.Location = new System.Drawing.Point(519, 452);
+            this.textPermitBoxY.Location = new System.Drawing.Point(437, 379);
             this.textPermitBoxY.Name = "textPermitBoxY";
-            this.textPermitBoxY.Size = new System.Drawing.Size(100, 44);
+            this.textPermitBoxY.Size = new System.Drawing.Size(85, 38);
             this.textPermitBoxY.TabIndex = 16;
             // 
             // textOfficerX
             // 
-            this.textOfficerX.Location = new System.Drawing.Point(390, 552);
+            this.textOfficerX.Location = new System.Drawing.Point(328, 462);
             this.textOfficerX.Name = "textOfficerX";
-            this.textOfficerX.Size = new System.Drawing.Size(100, 44);
+            this.textOfficerX.Size = new System.Drawing.Size(85, 38);
             this.textOfficerX.TabIndex = 17;
             // 
             // textOfficerY
             // 
-            this.textOfficerY.Location = new System.Drawing.Point(519, 552);
+            this.textOfficerY.Location = new System.Drawing.Point(437, 462);
             this.textOfficerY.Name = "textOfficerY";
-            this.textOfficerY.Size = new System.Drawing.Size(100, 44);
+            this.textOfficerY.Size = new System.Drawing.Size(85, 38);
             this.textOfficerY.TabIndex = 18;
             // 
             // textIsoOfficerX
             // 
-            this.textIsoOfficerX.Location = new System.Drawing.Point(390, 602);
+            this.textIsoOfficerX.Location = new System.Drawing.Point(328, 504);
             this.textIsoOfficerX.Name = "textIsoOfficerX";
-            this.textIsoOfficerX.Size = new System.Drawing.Size(100, 44);
+            this.textIsoOfficerX.Size = new System.Drawing.Size(85, 38);
             this.textIsoOfficerX.TabIndex = 19;
             // 
             // textIsoOfficerY
             // 
-            this.textIsoOfficerY.Location = new System.Drawing.Point(519, 602);
+            this.textIsoOfficerY.Location = new System.Drawing.Point(437, 504);
             this.textIsoOfficerY.Name = "textIsoOfficerY";
-            this.textIsoOfficerY.Size = new System.Drawing.Size(100, 44);
+            this.textIsoOfficerY.Size = new System.Drawing.Size(85, 38);
             this.textIsoOfficerY.TabIndex = 20;
             // 
             // textDateX
             // 
-            this.textDateX.Location = new System.Drawing.Point(390, 652);
+            this.textDateX.Location = new System.Drawing.Point(328, 546);
             this.textDateX.Name = "textDateX";
-            this.textDateX.Size = new System.Drawing.Size(100, 44);
+            this.textDateX.Size = new System.Drawing.Size(85, 38);
             this.textDateX.TabIndex = 21;
             // 
             // textDateY
             // 
-            this.textDateY.Location = new System.Drawing.Point(519, 652);
+            this.textDateY.Location = new System.Drawing.Point(437, 546);
             this.textDateY.Name = "textDateY";
-            this.textDateY.Size = new System.Drawing.Size(100, 44);
+            this.textDateY.Size = new System.Drawing.Size(85, 38);
             this.textDateY.TabIndex = 22;
             // 
             // textIsoPointX
             // 
-            this.textIsoPointX.Location = new System.Drawing.Point(390, 502);
+            this.textIsoPointX.Location = new System.Drawing.Point(328, 421);
             this.textIsoPointX.Name = "textIsoPointX";
-            this.textIsoPointX.Size = new System.Drawing.Size(100, 44);
+            this.textIsoPointX.Size = new System.Drawing.Size(85, 38);
             this.textIsoPointX.TabIndex = 23;
             // 
             // textIsoPointY
             // 
-            this.textIsoPointY.Location = new System.Drawing.Point(519, 502);
+            this.textIsoPointY.Location = new System.Drawing.Point(437, 421);
             this.textIsoPointY.Name = "textIsoPointY";
-            this.textIsoPointY.Size = new System.Drawing.Size(100, 44);
+            this.textIsoPointY.Size = new System.Drawing.Size(85, 38);
             this.textIsoPointY.TabIndex = 24;
             // 
             // labelSettings
             // 
             this.labelSettings.AutoSize = true;
             this.labelSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSettings.Location = new System.Drawing.Point(194, 9);
+            this.labelSettings.Location = new System.Drawing.Point(163, 8);
             this.labelSettings.Name = "labelSettings";
-            this.labelSettings.Size = new System.Drawing.Size(296, 82);
+            this.labelSettings.Size = new System.Drawing.Size(247, 69);
             this.labelSettings.TabIndex = 25;
             this.labelSettings.Text = "Settings";
             // 
             // labelXAxis
             // 
             this.labelXAxis.AutoSize = true;
-            this.labelXAxis.Location = new System.Drawing.Point(383, 293);
+            this.labelXAxis.Location = new System.Drawing.Point(323, 245);
             this.labelXAxis.Name = "labelXAxis";
-            this.labelXAxis.Size = new System.Drawing.Size(107, 37);
+            this.labelXAxis.Size = new System.Drawing.Size(95, 32);
             this.labelXAxis.TabIndex = 26;
             this.labelXAxis.Text = "X Axis";
             // 
             // labelYAxis
             // 
             this.labelYAxis.AutoSize = true;
-            this.labelYAxis.Location = new System.Drawing.Point(512, 293);
+            this.labelYAxis.Location = new System.Drawing.Point(431, 245);
             this.labelYAxis.Name = "labelYAxis";
-            this.labelYAxis.Size = new System.Drawing.Size(108, 37);
+            this.labelYAxis.Size = new System.Drawing.Size(95, 32);
             this.labelYAxis.TabIndex = 27;
             this.labelYAxis.Text = "Y Axis";
             // 
             // buttonDefaults
             // 
-            this.buttonDefaults.Location = new System.Drawing.Point(50, 133);
+            this.buttonDefaults.Location = new System.Drawing.Point(42, 111);
             this.buttonDefaults.Name = "buttonDefaults";
-            this.buttonDefaults.Size = new System.Drawing.Size(394, 58);
+            this.buttonDefaults.Size = new System.Drawing.Size(332, 49);
             this.buttonDefaults.TabIndex = 28;
             this.buttonDefaults.Text = "Load Defaults";
             this.buttonDefaults.UseVisualStyleBackColor = true;
@@ -263,9 +260,9 @@
             // 
             // buttonSaveSettings
             // 
-            this.buttonSaveSettings.Location = new System.Drawing.Point(50, 197);
+            this.buttonSaveSettings.Location = new System.Drawing.Point(42, 165);
             this.buttonSaveSettings.Name = "buttonSaveSettings";
-            this.buttonSaveSettings.Size = new System.Drawing.Size(394, 58);
+            this.buttonSaveSettings.Size = new System.Drawing.Size(332, 49);
             this.buttonSaveSettings.TabIndex = 29;
             this.buttonSaveSettings.Text = "Save Settings";
             this.buttonSaveSettings.UseVisualStyleBackColor = true;
@@ -276,17 +273,17 @@
             this.labelSetting.AutoSize = true;
             this.labelSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSetting.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.labelSetting.Location = new System.Drawing.Point(158, 722);
+            this.labelSetting.Location = new System.Drawing.Point(117, 608);
             this.labelSetting.Name = "labelSetting";
-            this.labelSetting.Size = new System.Drawing.Size(361, 55);
+            this.labelSetting.Size = new System.Drawing.Size(301, 46);
             this.labelSetting.TabIndex = 30;
             this.labelSetting.Text = "Settings Saved";
             // 
             // SettingsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 810);
+            this.ClientSize = new System.Drawing.Size(573, 679);
             this.Controls.Add(this.labelSetting);
             this.Controls.Add(this.buttonSaveSettings);
             this.Controls.Add(this.buttonDefaults);
@@ -314,6 +311,7 @@
             this.Controls.Add(this.labelPermitOfficer);
             this.Controls.Add(this.labelPermitBox);
             this.Controls.Add(this.labelPermitNumber);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingsForm";
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.SettingsForm_Load);

@@ -70,32 +70,41 @@ namespace Zebra_Tag_Printer
 
         private void buttonSaveSettings_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.TagX = Convert.ToInt32(textTagX.Text);
-            Properties.Settings.Default.TagY = Convert.ToInt32(textTagY.Text);
+            try
+            {
+                Properties.Settings.Default.TagX = Convert.ToInt32(textTagX.Text);
+                Properties.Settings.Default.TagY = Convert.ToInt32(textTagY.Text);
 
-            Properties.Settings.Default.PermitNoX = Convert.ToInt32(textPermitNoX.Text);
-            Properties.Settings.Default.PermitNoY = Convert.ToInt32(textPermitNoY.Text);
+                Properties.Settings.Default.PermitNoX = Convert.ToInt32(textPermitNoX.Text);
+                Properties.Settings.Default.PermitNoY = Convert.ToInt32(textPermitNoY.Text);
 
-            Properties.Settings.Default.PermitBoxX = Convert.ToInt32(textPermitBoxX.Text);
-            Properties.Settings.Default.PermitBoxY = Convert.ToInt32(textPermitBoxY.Text);
+                Properties.Settings.Default.PermitBoxX = Convert.ToInt32(textPermitBoxX.Text);
+                Properties.Settings.Default.PermitBoxY = Convert.ToInt32(textPermitBoxY.Text);
 
-            Properties.Settings.Default.IsoPointX = Convert.ToInt32(textIsoPointX.Text);
-            Properties.Settings.Default.IsoPointY = Convert.ToInt32(textIsoPointY.Text);
+                Properties.Settings.Default.IsoPointX = Convert.ToInt32(textIsoPointX.Text);
+                Properties.Settings.Default.IsoPointY = Convert.ToInt32(textIsoPointY.Text);
 
-            Properties.Settings.Default.IsoOfficerX = Convert.ToInt32(textIsoOfficerX.Text);
-            Properties.Settings.Default.IsoOfficerY = Convert.ToInt32(textIsoOfficerY.Text);
+                Properties.Settings.Default.IsoOfficerX = Convert.ToInt32(textIsoOfficerX.Text);
+                Properties.Settings.Default.IsoOfficerY = Convert.ToInt32(textIsoOfficerY.Text);
 
-            Properties.Settings.Default.DateX = Convert.ToInt32(textDateX.Text);
-            Properties.Settings.Default.DateY = Convert.ToInt32(textDateY.Text);
+                Properties.Settings.Default.DateX = Convert.ToInt32(textDateX.Text);
+                Properties.Settings.Default.DateY = Convert.ToInt32(textDateY.Text);
 
-            Properties.Settings.Default.OfficerX = Convert.ToInt32(textOfficerX.Text);
-            Properties.Settings.Default.OfficerY = Convert.ToInt32(textOfficerY.Text);
+                Properties.Settings.Default.OfficerX = Convert.ToInt32(textOfficerX.Text);
+                Properties.Settings.Default.OfficerY = Convert.ToInt32(textOfficerY.Text);
 
-            Properties.Settings.Default.Save();
+                Properties.Settings.Default.Save();
 
-            labelSetting.Show();
+                labelSetting.Show();
+            }
+            catch (FormatException)
 
-
+            {
+                MessageBox.Show("Only integers allowed, settings not saved.",
+                         "Important Note",
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Exclamation);
+            }
 
         }
 
