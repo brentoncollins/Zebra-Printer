@@ -106,32 +106,48 @@ namespace TagPrinter
             // Set variable for the next item this is to check later on if the next page needs to be setup or it is null
 
             // Print all text to the page ** Look into try block
-            try {
-                // Add one to the counter for tag numbers
-                totalnumber += 1;
-                e.Graphics.DrawString(totalnumber.ToString(), new Font("Areal", 22, FontStyle.Bold), Brushes.Black, 80, 50);
-                e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black,160, 380);
-                e.Graphics.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 240, 405);
-                e.Graphics.DrawString(item.ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 50, 480); //Across,Down
-                e.Graphics.DrawString(textPermitOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 190, 535);
-                e.Graphics.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 90, 580);
-                e.Graphics.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 90, 610);
-                
-                // Check if the next item is an empty string if it is the next tag is not needed.
-                if (Result[totalnumber][0].Equals(null) || Result[totalnumber][0].Equals(""))
-                {
-                    e.HasMorePages = false;
-                    totalnumber = 0;
-                }
-                //Else set up the next page
-                else
-                    e.HasMorePages = true;
-            }
-            // May not need this with the new check
-            catch (Exception err)
+
+            // Add one to the counter for tag numbers
+            if (item.ToString().Length > 40)
             {
-                Console.WriteLine("An error occurred: '{0}'", err);
+                var splt = item.ToString().Split(" ".ToCharArray());
+                Console.WriteLine(splt);
             }
+
+            totalnumber += 1;
+            e.Graphics.DrawString(totalnumber.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, 80, 50);
+            e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 160, 380);
+            e.Graphics.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 240, 405);
+            e.Graphics.DrawString(item.ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 50, 480); //Across,Down
+            e.Graphics.DrawString(textPermitOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 190, 535);
+            e.Graphics.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 90, 580);
+            e.Graphics.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 90, 610);
+
+            // Check if the next item is an empty string if it is the next tag is not needed.
+            if (Result.ElementAtOrDefault(totalnumber + 1) == null)
+            {
+                e.HasMorePages = false;
+                totalnumber = 0;
+
+            }
+            else
+                if (Result[totalnumber + 1].Equals(""))
+            {
+
+                e.HasMorePages = false;
+                totalnumber = 0;
+
+            }
+                else
+                e.HasMorePages = true;
+
+            
+
+            //Else set up the next page
+
+
+            // May not need this with the new check
+
         }
         
         private void MainWindow_Load(object sender, EventArgs e)
