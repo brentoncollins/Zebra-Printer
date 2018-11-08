@@ -3,49 +3,46 @@
   <Profiles />
   <Settings>
     <Setting Name="TagX" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">80</Value>
     </Setting>
     <Setting Name="TagY" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="PermitNoX" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">160</Value>
     </Setting>
     <Setting Name="PermitNoY" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">380</Value>
     </Setting>
     <Setting Name="PermitBoxX" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">240</Value>
     </Setting>
     <Setting Name="PermitBoxY" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">405</Value>
     </Setting>
     <Setting Name="IsoPointX" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">50</Value>
     </Setting>
     <Setting Name="IsoPointY" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">480</Value>
     </Setting>
     <Setting Name="IsoOfficerX" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">90</Value>
     </Setting>
     <Setting Name="IsoOfficerY" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">580</Value>
     </Setting>
     <Setting Name="DateX" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">190</Value>
     </Setting>
     <Setting Name="DateY" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">535</Value>
     </Setting>
     <Setting Name="OfficerX" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">90</Value>
     </Setting>
     <Setting Name="OfficerY" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1</Value>
-    </Setting>
-    <Setting Name="Setting" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">610</Value>
     </Setting>
   </Settings>
 </SettingsFile>
