@@ -1,22 +1,14 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Reflection;
 
 namespace Zebra_Tag_Printer
 {
-    public static class Methods
+    public static class BitmapTools
     {
 
         public static Bitmap ScaleByPercent(this Bitmap imgPhoto, int Percent)
-
         {
-
-
-
-
             float nPercent = ((float)Percent / 100);
 
             int sourceWidth = imgPhoto.Width;
@@ -41,11 +33,5 @@ namespace Zebra_Tag_Printer
             return bmPhoto;
 
         }
-
-       
-
     }
-   
-
-
 }

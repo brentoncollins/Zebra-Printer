@@ -21,7 +21,6 @@ namespace TagPrinter
         object item = 0;
         string newstring = "";
         bool pPreview = false;
-      
 
 
         public MainWindow()
@@ -29,8 +28,6 @@ namespace TagPrinter
             InitializeComponent();
             
         }
-
-
 
         //Print button checks
         private void buttonPrint_Click(object sender, EventArgs e)
@@ -97,7 +94,6 @@ namespace TagPrinter
         // Reset the counter, clear the grid and paste
         private void buttonPaste_Click(object sender, EventArgs e)
         {
-
             myDataGridView.Rows.Clear();
             PasteClipboard();
         }
@@ -105,7 +101,6 @@ namespace TagPrinter
         // Reset the counter and clear the grid
         private void buttonClear_Click(object sender, EventArgs e)
         {
-
             myDataGridView.Rows.Clear();
         }
 
@@ -113,37 +108,7 @@ namespace TagPrinter
         private void printDocument1_PrintPage_1(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
 
-            // Get table results
-            Result = myDataGridView.Rows.OfType<DataGridViewRow>().Select(
-            r => r.Cells.OfType<DataGridViewCell>().Select(c => c.Value).ToArray()).ToList();
-            // Set vairable for the isolation item in the list
-
-            item = Result[totalnumber][0];
-
-            // If the isolation point is long
-            if (item.ToString().Length > 32)
-            {
-                //Find all spaces in string and add to list
-                var foundIndexes = new List<int>();
-                for (int i = 0; i < item.ToString().Length; i++)
-
-                    if (item.ToString()[i] == ' ') foundIndexes.Add(i);
-
-                // Find the closest space to the position 32
-                int closest = foundIndexes.Aggregate((x, y) => Math.Abs(x - 32) < Math.Abs(y - 32) ? x : y);
-
-                // Get string length
-                int z = item.ToString().Length;
-
-                // Create substrings, add newling and join them together again
-                string a = item.ToString().Substring(0, closest) + Environment.NewLine;
-                string b = item.ToString().Substring(closest, z - closest);
-                newstring = a + b;
-            }
-            else
-            {
-                newstring = Result[totalnumber][0].ToString();
-            }
+            object item = GetCellData(totalnumber);
 
             totalnumber += 1;
 
@@ -154,24 +119,16 @@ namespace TagPrinter
 
                 Stream myStream = myAssembly.GetManifestResourceStream("Zebra_Tag_Printer.tag.bmp");
                 Bitmap bmp = new Bitmap(myStream);
-                e.Graphics.DrawImage(Zebra_Tag_Printer.Methods.ScaleByPercent(bmp, 80), 0, 0);
+                e.Graphics.DrawImage(Zebra_Tag_Printer.BitmapTools.ScaleByPercent(bmp, 80), 0, 0);
             }
 
             e.Graphics.DrawString(totalnumber.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, Settings.Default.TagX, Settings.Default.TagY);
             e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.PermitNoX, Settings.Default.PermitNoY);
             e.Graphics.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.PermitBoxX, Settings.Default.PermitBoxY);
-            e.Graphics.DrawString(newstring, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.IsoPointX, Settings.Default.IsoPointY); //Across,Down
+            e.Graphics.DrawString(item.ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.IsoPointX, Settings.Default.IsoPointY); //Across,Down
             e.Graphics.DrawString(textPermitOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.OfficerX, Settings.Default.OfficerY);
             e.Graphics.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.IsoOfficerX, Settings.Default.IsoOfficerY);
             e.Graphics.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.DateX, Settings.Default.DateY);
-
-            //e.Graphics.DrawString(totalnumber.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, 80, 50);
-            //e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 160, 380);
-            //e.Graphics.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 240, 405);
-            //e.Graphics.DrawString(item.ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 50, 480); //Across,Down
-            //e.Graphics.DrawString(textPermitOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 190, 535);
-            //e.Graphics.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 90, 580);
-            //e.Graphics.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, 90, 610);
 
             // Check if the next item is an empty string if it is the next tag is not needed.
             if (Result.ElementAtOrDefault(totalnumber + 1) == null)
@@ -190,12 +147,7 @@ namespace TagPrinter
             }
             else
                 e.HasMorePages = true;
-
-
-
-        }
-
-
+            }
 
         // Print Preview
         private void button1_Click(object sender, EventArgs e)
@@ -221,38 +173,60 @@ namespace TagPrinter
             // Disable print button on preview
             ((ToolStripButton)((ToolStrip)printPreviewDialog1.Controls[1]).Items[0]).Enabled = false;
 
-
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.ShowDialog();
-
-
         }
-
 
         private void buttonSettings_Click(object sender, EventArgs e)
         {
             new Zebra_Tag_Printer.SettingsForm().Show();
         }
 
- 
+        public object GetCellData(int tagnumber)
+        {
+            //Get table data
+            Result = myDataGridView.Rows.OfType<DataGridViewRow>().Select(
+           r => r.Cells.OfType<DataGridViewCell>().Select(c => c.Value).ToArray()).ToList();
+            // Check if null
+            if (Result[tagnumber][0] == null)
+            {
+                return "Isolation Point";
+            }
+            else
+            {
+                if (Result[tagnumber][0].ToString().Length > 24)
+                {
+                    item = Result[tagnumber][0];
+                    //Find all spaces in string and add to list
+                    var foundIndexes = new List<int>();
+                    for (int i = 0; i < item.ToString().Length; i++)
 
+                        if (item.ToString()[i] == ' ') foundIndexes.Add(i);
 
+                    // Find the closest space to the position 32
+                    int closest = foundIndexes.Aggregate((x_a, y_a) => Math.Abs(x_a - 24) < Math.Abs(y_a - 24) ? x_a : y_a);
+
+                    // Get string length
+                    int z = item.ToString().Length;
+
+                    // Create substrings, add newling and join them together again
+                    string a = item.ToString().Substring(0, closest) + Environment.NewLine;
+                    string b = item.ToString().Substring(closest, z - closest);
+                    newstring = a + b;
+
+                    return newstring;
+                }
+                else
+                {
+                    newstring = Result[0][0].ToString();
+
+                    return newstring;
+                }
+            }
+        }
   
-
         public void panel1_Paint()
         {
-
-            
-            // Get table results
-            Result = myDataGridView.Rows.OfType<DataGridViewRow>().Select(
-            r => r.Cells.OfType<DataGridViewCell>().Select(c => c.Value).ToArray()).ToList();
-            // Set vairable for the isolation item in the list
-
-            
-
-
-
-
             double x = 2.3;
             double y = 1.3;
             SolidBrush s = new SolidBrush(Color.Black);
@@ -261,16 +235,8 @@ namespace TagPrinter
             e.DrawString(1.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.TagX/x,0)), Convert.ToInt32(Math.Round(Settings.Default.TagY/ y, 0)));
             e.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.PermitNoX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.PermitNoY / y, 0)));
             e.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.PermitBoxX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.PermitBoxY / y, 0)));
-            if (Result[totalnumber][0] == null)
-            {
-                e.DrawString("Isolation Point", new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.IsoPointX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.IsoPointY / y, 0))); //Across,Down
-
-            }
-            else
-            {
-                e.DrawString(Result[totalnumber][0].ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.IsoPointX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.IsoPointY / y, 0))); //Across,Down
-
-            }
+            object item = GetCellData(0);
+            e.DrawString(item.ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.IsoPointX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.IsoPointY / y, 0))); //Across,Down
             e.DrawString(textPermitOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.OfficerX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.OfficerY / y, 0)));
             e.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.IsoOfficerX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.IsoOfficerY / y, 0)));
             e.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.DateX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.DateY / y, 0)));
@@ -300,10 +266,7 @@ namespace TagPrinter
         {
             panel1_Paint();
         }
-
-       
     }
-   
 }
 
 
