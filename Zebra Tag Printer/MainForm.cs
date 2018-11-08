@@ -11,7 +11,7 @@ using Zebra_Tag_Printer.Properties;
 
 namespace TagPrinter
 {
-    
+
     public partial class MainWindow : Form
 
     {
@@ -21,27 +21,17 @@ namespace TagPrinter
         object item = 0;
         string newstring = "";
         bool pPreview = false;
-        
+      
 
-
-        //Bitmap resizedbmp = new Bitmap(bmp, new Size(bmp.Width / 2, bmp.Height / 2));
-
-       //static float width = 3000;
-       //static float height = 5000;
-
-       // static float scale = Math.Min(width / bmp.Width, height / bmp.Height);
-        //static int scaleWidth = (int)(bmp.Width * scale);
-        //static int scaleHeight = (int)(bmp.Height * scale);
-        //Bitmap scaledBitmap = new Bitmap(scaleWidth, scaleHeight);
-        
 
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
 
-       
+
         //Print button checks
         private void buttonPrint_Click(object sender, EventArgs e)
         {
@@ -138,11 +128,11 @@ namespace TagPrinter
                 for (int i = 0; i < item.ToString().Length; i++)
 
                     if (item.ToString()[i] == ' ') foundIndexes.Add(i);
-                
+
                 // Find the closest space to the position 32
                 int closest = foundIndexes.Aggregate((x, y) => Math.Abs(x - 32) < Math.Abs(y - 32) ? x : y);
-             
-               // Get string length
+
+                // Get string length
                 int z = item.ToString().Length;
 
                 // Create substrings, add newling and join them together again
@@ -150,19 +140,23 @@ namespace TagPrinter
                 string b = item.ToString().Substring(closest, z - closest);
                 newstring = a + b;
             }
+            else
+            {
+                newstring = Result[totalnumber][0].ToString();
+            }
 
             totalnumber += 1;
 
             if (pPreview.Equals(true))
-                {
+            {
                 Assembly myAssembly = Assembly.GetExecutingAssembly();
                 string[] names = myAssembly.GetManifestResourceNames();
 
                 Stream myStream = myAssembly.GetManifestResourceStream("Zebra_Tag_Printer.tag.bmp");
                 Bitmap bmp = new Bitmap(myStream);
-                e.Graphics.DrawImage(Zebra_Tag_Printer.Methods.ScaleByPercent(bmp, 80), 0,0);
+                e.Graphics.DrawImage(Zebra_Tag_Printer.Methods.ScaleByPercent(bmp, 80), 0, 0);
             }
-            
+
             e.Graphics.DrawString(totalnumber.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, Settings.Default.TagX, Settings.Default.TagY);
             e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.PermitNoX, Settings.Default.PermitNoY);
             e.Graphics.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.PermitBoxX, Settings.Default.PermitBoxY);
@@ -201,10 +195,7 @@ namespace TagPrinter
 
         }
 
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
 
-        }
 
         // Print Preview
         private void button1_Click(object sender, EventArgs e)
@@ -243,10 +234,76 @@ namespace TagPrinter
             new Zebra_Tag_Printer.SettingsForm().Show();
         }
 
+ 
+
+
+  
+
+        public void panel1_Paint()
+        {
+
+            
+            // Get table results
+            Result = myDataGridView.Rows.OfType<DataGridViewRow>().Select(
+            r => r.Cells.OfType<DataGridViewCell>().Select(c => c.Value).ToArray()).ToList();
+            // Set vairable for the isolation item in the list
+
+            
+
+
+
+
+            double x = 2.3;
+            double y = 1.3;
+            SolidBrush s = new SolidBrush(Color.Black);
+            Graphics e = panelTag.CreateGraphics();
+            e.Clear(Color.White);
+            e.DrawString(1.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.TagX/x,0)), Convert.ToInt32(Math.Round(Settings.Default.TagY/ y, 0)));
+            e.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.PermitNoX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.PermitNoY / y, 0)));
+            e.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.PermitBoxX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.PermitBoxY / y, 0)));
+            if (Result[totalnumber][0] == null)
+            {
+                e.DrawString("Isolation Point", new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.IsoPointX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.IsoPointY / y, 0))); //Across,Down
+
+            }
+            else
+            {
+                e.DrawString(Result[totalnumber][0].ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.IsoPointX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.IsoPointY / y, 0))); //Across,Down
+
+            }
+            e.DrawString(textPermitOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.OfficerX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.OfficerY / y, 0)));
+            e.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.IsoOfficerX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.IsoOfficerY / y, 0)));
+            e.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.DateX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.DateY / y, 0)));
+        }
+
+        private void textPermitNumber_TextChanged(object sender, EventArgs e)
+        {
+            panel1_Paint();
+        }
+
+        private void textPermitBox_TextChanged(object sender, EventArgs e)
+        {
+            panel1_Paint();
+        }
+
+        private void textPermitOfficer_TextChanged(object sender, EventArgs e)
+        {
+            panel1_Paint();
+        }
+
+        private void textPermitIsoOfficer_TextChanged(object sender, EventArgs e)
+        {
+            panel1_Paint();
+        }
+
+        private void myDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            panel1_Paint();
+        }
+
        
     }
-
-    
+   
 }
 
 

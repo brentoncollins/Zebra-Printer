@@ -108,6 +108,9 @@ namespace Zebra_Tag_Printer
 
         }
 
+        private void label1_Click_1(object sender, EventArgs e)
+        {
 
+        }
     }
 }
