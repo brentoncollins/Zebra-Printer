@@ -18,22 +18,25 @@ namespace TagPrinter
         // Public number for counting up the tags
         int totalnumber = 0;
         List<object[]> Result;
-        object item = 0;
-        string newstring = "";
-        bool pPreview = false;
+       // bool pPreview = false;
+        string newstring;
+        object item;
+  
+
 
 
         public MainWindow()
         {
             InitializeComponent();
-            
+
+
         }
 
         //Print button checks
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            pPreview = false;
-            totalnumber = 0;
+           // pPreview = false;
+
             // Get list from grid list[0][0]
             var Result = myDataGridView.Rows.OfType<DataGridViewRow>().Select(
             r => r.Cells.OfType<DataGridViewCell>().Select(c => c.Value).ToArray()).ToList();
@@ -108,19 +111,20 @@ namespace TagPrinter
         private void printDocument1_PrintPage_1(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
 
+
             object item = GetCellData(totalnumber);
 
             totalnumber += 1;
 
-            if (pPreview.Equals(true))
-            {
-                Assembly myAssembly = Assembly.GetExecutingAssembly();
-                string[] names = myAssembly.GetManifestResourceNames();
-
-                Stream myStream = myAssembly.GetManifestResourceStream("Zebra_Tag_Printer.tag.bmp");
-                Bitmap bmp = new Bitmap(myStream);
-                e.Graphics.DrawImage(Zebra_Tag_Printer.BitmapTools.ScaleByPercent(bmp, 80), 0, 0);
-            }
+         //     if (pPreview.Equals(true))
+         //     {
+         //         Assembly myAssembly = Assembly.GetExecutingAssembly();
+         ///         string[] names = myAssembly.GetManifestResourceNames();
+         //         Console.WriteLine(names);
+         //         Stream myStream = myAssembly.GetManifestResourceStream("Zebra_Tag_Printer.tag.bmp");
+         //         Bitmap bmp = new Bitmap(myStream);
+         //         e.Graphics.DrawImage(Zebra_Tag_Printer.BitmapTools.ScaleByPercent(bmp, 60), 0, 0);
+         //     }
 
             e.Graphics.DrawString(totalnumber.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, Settings.Default.TagX, Settings.Default.TagY);
             e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Settings.Default.PermitNoX, Settings.Default.PermitNoY);
@@ -147,12 +151,12 @@ namespace TagPrinter
             }
             else
                 e.HasMorePages = true;
-            }
+        }
 
         // Print Preview
         private void button1_Click(object sender, EventArgs e)
         {
-            pPreview = true;
+           // pPreview = true;
             //Get table data to check if empty
             var Result = myDataGridView.Rows.OfType<DataGridViewRow>().Select(
             r => r.Cells.OfType<DataGridViewCell>().Select(c => c.Value).ToArray()).ToList();
@@ -184,6 +188,8 @@ namespace TagPrinter
 
         public object GetCellData(int tagnumber)
         {
+
+
             //Get table data
             Result = myDataGridView.Rows.OfType<DataGridViewRow>().Select(
            r => r.Cells.OfType<DataGridViewCell>().Select(c => c.Value).ToArray()).ToList();
@@ -193,7 +199,7 @@ namespace TagPrinter
                 return "Isolation Point";
             }
             else
-            {
+            {   // Split the sring to the nearest space if the length of the string is longer than 24 chars.
                 if (Result[tagnumber][0].ToString().Length > 24)
                 {
                     item = Result[tagnumber][0];
@@ -217,55 +223,68 @@ namespace TagPrinter
                     return newstring;
                 }
                 else
-                {
-                    newstring = Result[0][0].ToString();
+                {   // if string not longer than 24 then just return the string as normal.
+                    newstring = Result[totalnumber][0].ToString();
 
                     return newstring;
                 }
             }
         }
-  
-        public void panel1_Paint()
+
+
+
+
+        private void textPermitBox_TextChanged(object sender, EventArgs e)
         {
-            double x = 2.3;
-            double y = 1.3;
-            SolidBrush s = new SolidBrush(Color.Black);
-            Graphics e = panelTag.CreateGraphics();
-            e.Clear(Color.White);
-            e.DrawString(1.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.TagX/x,0)), Convert.ToInt32(Math.Round(Settings.Default.TagY/ y, 0)));
-            e.DrawString(textPermitNumber.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.PermitNoX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.PermitNoY / y, 0)));
-            e.DrawString(textPermitBox.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.PermitBoxX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.PermitBoxY / y, 0)));
-            object item = GetCellData(0);
-            e.DrawString(item.ToString(), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.IsoPointX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.IsoPointY / y, 0))); //Across,Down
-            e.DrawString(textPermitOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.OfficerX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.OfficerY / y, 0)));
-            e.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.IsoOfficerX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.IsoOfficerY / y, 0)));
-            e.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 16, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.DateX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.DateY / y, 0)));
+            pictureBox1.Invalidate();
         }
 
         private void textPermitNumber_TextChanged(object sender, EventArgs e)
         {
-            panel1_Paint();
-        }
-
-        private void textPermitBox_TextChanged(object sender, EventArgs e)
-        {
-            panel1_Paint();
+            pictureBox1.Invalidate();
         }
 
         private void textPermitOfficer_TextChanged(object sender, EventArgs e)
         {
-            panel1_Paint();
-        }
+            pictureBox1.Invalidate();
+           
+            }
 
-        private void textPermitIsoOfficer_TextChanged(object sender, EventArgs e)
+
+            private void textPermitIsoOfficer_TextChanged(object sender, EventArgs e)
         {
-            panel1_Paint();
+            pictureBox1.Invalidate();
         }
 
         private void myDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            panel1_Paint();
+            pictureBox1.Invalidate();
         }
+
+        private void panelTag_Paint(object sender, PaintEventArgs e)
+        {
+            pictureBox1.Invalidate();
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+
+            double x = 1.3;
+            double y = 1.29;
+            SolidBrush s = new SolidBrush(Color.Black);
+
+                e.Graphics.DrawString(1.ToString(), new Font("Areal Black", 22, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.TagX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.TagY / y, 0)));
+                e.Graphics.DrawString(textPermitNumber.Text, new Font("Areal", 10, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.PermitNoX / x + 2, 0)), Convert.ToInt32(Math.Round(Settings.Default.PermitNoY / y + 2, 0)));
+                e.Graphics.DrawString(textPermitBox.Text, new Font("Areal", 10, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.PermitBoxX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.PermitBoxY / y + 2, 0)));
+                object item = GetCellData(0);
+                e.Graphics.DrawString(item.ToString(), new Font("Areal", 14, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.IsoPointX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.IsoPointY / y, 0))); //Across,Down
+                e.Graphics.DrawString(textPermitOfficer.Text, new Font("Areal", 10, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.OfficerX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.OfficerY / y, 0)));
+                e.Graphics.DrawString(textPermitIsoOfficer.Text, new Font("Areal", 10, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.IsoOfficerX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.IsoOfficerY / y, 0)));
+                e.Graphics.DrawString(DateTime.Now.ToString("d/M/yyyy"), new Font("Areal", 10, FontStyle.Bold), Brushes.Black, Convert.ToInt32(Math.Round(Settings.Default.DateX / x, 0)), Convert.ToInt32(Math.Round(Settings.Default.DateY / y, 0)));
+
+        }
+
+
     }
 }
 

@@ -11,8 +11,10 @@ namespace Zebra_Tag_Printer
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)
-        {
+        {   // Hide label on load
             labelSetting.Hide();
+
+            // Assign X and y settings variables to text boxes. 
             textTagX.Text = Properties.Settings.Default.TagX.ToString();
             textTagY.Text = Properties.Settings.Default.TagY.ToString();
 
@@ -35,13 +37,10 @@ namespace Zebra_Tag_Printer
             textDateY.Text = Properties.Settings.Default.DateY.ToString();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonDefaults_Click(object sender, EventArgs e)
         {
+            // On load defaults set all x and y text boxed to the default values
             textTagX.Text = 80.ToString();
             textTagY.Text = 50.ToString();
             textPermitNoX.Text = 160.ToString();
@@ -56,13 +55,13 @@ namespace Zebra_Tag_Printer
             textIsoOfficerY.Text = 580.ToString();
             textDateX.Text = 90.ToString();
             textDateY.Text = 610.ToString();
-
         }
 
         private void buttonSaveSettings_Click(object sender, EventArgs e)
         {
             try
             {
+                // Try block to endure all values are integers, If not show warning dialog box.
                 Properties.Settings.Default.TagX = Convert.ToInt32(textTagX.Text);
                 Properties.Settings.Default.TagY = Convert.ToInt32(textTagY.Text);
 
@@ -98,10 +97,6 @@ namespace Zebra_Tag_Printer
             }
 
         }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

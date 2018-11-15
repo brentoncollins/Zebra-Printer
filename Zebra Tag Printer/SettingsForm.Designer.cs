@@ -103,7 +103,7 @@
             this.labelDate.Size = new System.Drawing.Size(75, 32);
             this.labelDate.TabIndex = 8;
             this.labelDate.Text = "Date";
-            this.labelDate.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // labelIsolationPoint
             // 
@@ -305,7 +305,7 @@
             this.label1.Size = new System.Drawing.Size(544, 64);
             this.label1.TabIndex = 31;
             this.label1.Text = "Change the X and Y axis for each variable\r\nto move them around the page.";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+           
             // 
             // SettingsForm
             // 
