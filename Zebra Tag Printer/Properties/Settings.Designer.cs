@@ -145,7 +145,7 @@ namespace Zebra_Tag_Printer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("190")]
+        [global::System.Configuration.DefaultSettingValueAttribute("90")]
         public int DateX {
             get {
                 return ((int)(this["DateX"]));
@@ -157,7 +157,7 @@ namespace Zebra_Tag_Printer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("535")]
+        [global::System.Configuration.DefaultSettingValueAttribute("610")]
         public int DateY {
             get {
                 return ((int)(this["DateY"]));
@@ -169,7 +169,7 @@ namespace Zebra_Tag_Printer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("90")]
+        [global::System.Configuration.DefaultSettingValueAttribute("190")]
         public int OfficerX {
             get {
                 return ((int)(this["OfficerX"]));
@@ -181,7 +181,7 @@ namespace Zebra_Tag_Printer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("610")]
+        [global::System.Configuration.DefaultSettingValueAttribute("535")]
         public int OfficerY {
             get {
                 return ((int)(this["OfficerY"]));

@@ -33,16 +33,16 @@
       <Value Profile="(Default)">580</Value>
     </Setting>
     <Setting Name="DateX" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">190</Value>
-    </Setting>
-    <Setting Name="DateY" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">535</Value>
-    </Setting>
-    <Setting Name="OfficerX" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">90</Value>
     </Setting>
-    <Setting Name="OfficerY" Type="System.Int32" Scope="User">
+    <Setting Name="DateY" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">610</Value>
+    </Setting>
+    <Setting Name="OfficerX" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">190</Value>
+    </Setting>
+    <Setting Name="OfficerY" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">535</Value>
     </Setting>
   </Settings>
 </SettingsFile>
